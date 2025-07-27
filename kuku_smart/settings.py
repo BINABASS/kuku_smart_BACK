@@ -51,12 +51,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
     'channels',
     'corsheaders',
     'users',
     'farmers',
     'breeds',
     'batches',
+    'devices',
+    'sensors',
+    'subscriptions',
+    'inventory',
+    'knowledge_base',
+    'financials',
+    'analytics',
 ]
 
 MIDDLEWARE = [
@@ -95,8 +103,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': env('DB_NAME', default='kuku_smart'),
-        'USER': env('DB_USER', default='postgres'),
-        'PASSWORD': env('DB_PASSWORD', default='postgres'),
+        'USER': env('DB_USER', default='kuku'),
+        'PASSWORD': env('DB_PASSWORD', default='kuku@123'),
         'HOST': env('DB_HOST', default='localhost'),
         'PORT': env('DB_PORT', default='5432'),
     }
