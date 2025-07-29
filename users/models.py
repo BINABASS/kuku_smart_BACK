@@ -42,10 +42,20 @@ class CustomUser(AbstractUser):
 
 class Profile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    address = models.TextField(blank=True, null=True)
     profile_picture = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
+    about_me = models.TextField(blank=True, null=True)
+    education = models.JSONField(default=list, blank=True)   # [{years, school, desc}]
+    experience = models.JSONField(default=list, blank=True)  # [{years, company, desc}]
+    skills = models.JSONField(default=list, blank=True)      # ["Python", "Django", ...]
+    address = models.CharField(max_length=255, blank=True, null=True)
+    phone = models.CharField(max_length=30, blank=True, null=True)
+    linkedin = models.URLField(blank=True, null=True)
+    twitter = models.URLField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.user.email} Profile"
 
 class VitalSigns(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)

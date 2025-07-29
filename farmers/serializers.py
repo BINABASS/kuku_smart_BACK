@@ -11,7 +11,8 @@ class FarmSerializer(serializers.ModelSerializer):
 
 class FarmerSerializer(serializers.ModelSerializer):
     user = UserSerializer()
+    farm = FarmSerializer()
 
     class Meta:
         model = Farmer
-        fields = ['id', 'user', 'farm', 'created_at', 'updated_at']
+        fields = ['id', 'user', 'farm', 'first_name', 'last_name', 'phone', 'address', 'registration_date', 'status']
