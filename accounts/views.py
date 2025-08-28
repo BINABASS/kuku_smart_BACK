@@ -31,8 +31,8 @@ class FarmerViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=['get'])
     def my_farm(self, request):
         """Get current farmer's farm information"""
-        if hasattr(request.user, 'farmer'):
-            farmer = request.user.farmer
+        if hasattr(request.user, 'farmer_profile'):
+            farmer = request.user.farmer_profile
             serializer = self.get_serializer(farmer)
             return Response(serializer.data)
         return Response({'error': 'User is not a farmer'}, status=status.HTTP_400_BAD_REQUEST)

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets, permissions
+from config.permissions import IsAdminOrReadOnly
 from sensors.models import SensorType, Reading
 from sensors.serializers import SensorTypeSerializer, ReadingSerializer
 
@@ -8,7 +9,7 @@ from sensors.serializers import SensorTypeSerializer, ReadingSerializer
 class SensorTypeViewSet(viewsets.ModelViewSet):
     queryset = SensorType.objects.all()
     serializer_class = SensorTypeSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsAdminOrReadOnly]
 
 class ReadingViewSet(viewsets.ModelViewSet):
     queryset = Reading.objects.all().select_related('device', 'sensor_type')
