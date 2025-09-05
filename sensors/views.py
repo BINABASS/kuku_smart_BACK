@@ -43,7 +43,7 @@ class ReadingViewSet(viewsets.ModelViewSet):
         
         # Apply filters from query parameters
         device_id = self.request.query_params.get('device')
-        sensor_type_id = self.request.query_params_params.get('sensor_type')
+        sensor_type_id = self.request.query_params.get('sensor_type')
         from_ts = self.request.query_params.get('from')
         to_ts = self.request.query_params.get('to')
         
